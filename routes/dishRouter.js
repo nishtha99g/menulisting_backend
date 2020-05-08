@@ -24,5 +24,31 @@ dishRouter.route('/')
  .delete((req,res,next)=>{
      res.end('Deleting all the dishes');
  });
+ 
+ dishRouter.route('/:dishId')
+.get((req,res,next)=>{
+    res.end('will send the dish: '+req.params.dishId+' to you');
+ })
+.post((req,res,next)=>{
+    res.statusCode=403;
+    res.end('POST operation not seperated in /dishes/'+req.params.dishId);
+})
+.put((req,res,next)=>{
+    res.write('Updataing the dish'+req.params.dishId+'\n');
+    res.end('Will updte the dish: '+req.body.name+' with details'+req.body.description);
+})
+.delete((req,res,next)=>{
+    res.end('Deleting the dish'+ req.params.dishId);
+});
+
 
  module.exports=dishRouter;
+
+
+
+
+
+
+
+
+
