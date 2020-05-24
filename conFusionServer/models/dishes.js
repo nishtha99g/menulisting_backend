@@ -2,6 +2,7 @@ const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 require('mongoose-currency').loadType(mongoose);
 const Currency=mongoose.Types.Currency;
+var passportLocalMongoose=require('passport-local-mongoose');
 
 const commentSchema=new Schema({
  rating:{
@@ -58,5 +59,7 @@ const dishSchema=new Schema({
     timestamps:true
 });
 
+
 var Dishes=mongoose.model('Dish',dishSchema);
+Dishes.plugin(passportLocalMongoose);
 module.exports=Dishes;
